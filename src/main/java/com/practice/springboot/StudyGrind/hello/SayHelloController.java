@@ -13,4 +13,18 @@ public class SayHelloController {
     public String sayHello(){
         return "Hi! How're you doing?";
     }
+
+    //html page of saying greetings when I click on /say-hello-html url
+    @RequestMapping("/say-hello-html")
+    @ResponseBody
+    public String sayHelloHtml(){
+        StringBuffer sb = new StringBuffer();
+        sb.append("<html>");
+        sb.append("<head><title>Welcome page</title></head>");
+        sb.append("<body>");
+        sb.append("<h3 align = 'center' >Hi! Welcome! How're you doing?</h3>");
+        sb.append("</body>");
+        sb.append("</html>");
+        return sb.toString();
+    }
 }
