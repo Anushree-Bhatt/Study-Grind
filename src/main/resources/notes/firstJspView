@@ -1,0 +1,24 @@
+
+    @RequestMapping("/say-hello-jsp")
+    public String sayHelloJsp(){
+        return "say_hello";  //Actual path : src/resources/META-INf/resources/WEB-INF/jsp/say_hello.jsp
+    }
+
+    Say there are multiple jsp files:-
+    src/resources/META-INF/resources/WEB-INF/jsp/login.jsp
+    src/resources/META-INF/resources/WEB-INF/jsp/welcome.jsp
+    src/resources/META-INf/resources/WEB-INF/jsp/to_do.jsp
+    src/resources/META-INF/resources/WEB-INF/jsp/say_hello.jsp
+
+    so we can create a shortcut to src/resources/META-INf/resources/WEB-INF/jsp/ in application.properties
+    prefix = src/resources/META-INF/resources/WEB-INF/jsp/
+    suffix = .jsp
+    And you have to configure them using @ConfigurationProperty method.
+
+    Eazy!
+    using Spring mvc :
+    spring.mvc.view.prefix = /WEB-INF/jsp/
+    spring.mvc.view.suffix = .jsp
+
+    note: spring.mvc.view -> points to src/resources/META-INF/resources location by default
+
