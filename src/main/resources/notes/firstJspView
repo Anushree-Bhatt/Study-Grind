@@ -22,3 +22,12 @@
 
     note: spring.mvc.view -> points to src/resources/META-INF/resources location by default
 
+    Also , add this dependency:-
+    <dependency>
+    			<groupId>org.apache.tomcat.embed</groupId>
+    			<artifactId>tomcat-embed-jasper</artifactId>
+    			<version>10.1.x</version>
+    </dependency>
+
+    If you want to run jsp in tomcat - add this
+

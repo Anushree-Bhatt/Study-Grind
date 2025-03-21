@@ -1,0 +1,7 @@
+url : http://localhost:8080/login?name=anushree
+
+?name=anushree -> Query parameter
+
+Match Query parameter to method parameter using @RequestParam
+
+send any value from controller to biew using Model (Ex: ModelMap)
