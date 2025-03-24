@@ -1,0 +1,25 @@
+http://localhost:8080/login?name=anushree
+
+Dispatcher controller :-
+
+1. processes the req
+2. Identifies the right controller based on /login?name=anushree
+    -2a) control goes to this method and executes.
+
+            @RequestMapping("/login")
+            public String goToLogin(@RequestParam String name, ModelMap model){
+                System.out.println("Request param name is:"+name); //Not recommended. USe logging in next step.
+                Logger logger = LoggerFactory.getLogger(getClass());
+                logger.debug("Request param - name = {}",name);
+                model.put("user_name", name);
+                return "login";
+            }
+            => Puts the data into model
+            => returns view name
+
+    -2b) identifies the right view "login.jsp" with the help of view Resolver
+            - View Resolver finds that page using spring.mvc.view properties present in application.properties file
+    -2c) executes the view page login.jsp , also uses the model data during execution.
+3.Returns HTTP response.
+
+
