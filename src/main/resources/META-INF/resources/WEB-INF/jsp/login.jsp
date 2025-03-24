@@ -1,6 +1,12 @@
 <html>
 <head> <title> study grind login page </title> </head>
 <body>
-    <h1> Welcome to Login page ${user_name}</h1>
+    <h3> Welcome to Login page </h3>
+    <pre>${error_msg}</pre>
+    <form method = "POST">
+        <div> name = <input type = "text" name = "user_name"> </div>
+        <div> password = <input type = "password" name = "user_password"> </div>
+        <div> <input type = "submit" value = "submit"> </div>
+    </form>
 </body>
 </html>
