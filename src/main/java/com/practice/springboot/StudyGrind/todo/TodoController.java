@@ -3,8 +3,10 @@ package com.practice.springboot.StudyGrind.todo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("user_name")
 public class TodoController {
 
     TodoService todoService;
@@ -13,9 +15,9 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @RequestMapping("/todo")
+    @RequestMapping("/list_todos")
     public String listOfTodos(ModelMap model){
         model.put("todo", todoService.get_todos());
-        return "todo"; //todo.jsp
+        return "list_todos"; //list_todos.jsp
     }
 }

@@ -7,8 +7,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("user_name")
 public class LoginController {
 
     private AuthenticationService authenticationService;
@@ -23,11 +25,11 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String validateLogin(@RequestParam String user_name, @RequestParam String user_password, ModelMap model){
-        Boolean res = authenticationService.authenticateUser(user_name, user_password);
+    public String validateLogin(@RequestParam String name, @RequestParam String user_password, ModelMap model){
+        Boolean res = authenticationService.authenticateUser(name, user_password);
 
         if(res){
-            model.put("user_name", user_name);
+            model.put("user_name", name);
             return "welcome";
         }
         model.put("error_msg", "invalid credentials. Try again!");
