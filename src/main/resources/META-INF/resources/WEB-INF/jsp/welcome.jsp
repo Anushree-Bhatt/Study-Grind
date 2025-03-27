@@ -1,11 +1,16 @@
 <html>
-<head> <title> welcome page </title> </head>
+<head>
+    <title> welcome page </title>
+    <link href = "/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"> </link>
+</head>
+
 <body>
-    <h3> Welcome ${user_name} </h3>
-    <hr>
-    <div>
-        <h4><a href = "list_todos">Manage your todos</a></h4>
+    <div class = "container">
+        Welcome ${user_name}
+        <a href = "list_todos">Manage</a> your todos
     </div>
 
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"> </script>
+    <script src="/webjars/jquery/3.7.1/jquery.min.js"> </script>
 </body>
 </html>

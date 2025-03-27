@@ -6,11 +6,10 @@
     <link href = "/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"> </link>
 </head>
 <body>
-    <h2> Welcome ${user_name} </h2>
-    <hr>
-    <div>
-        <h1>Study Grind, your courses is here</h3>
-        <table border = "1">
+    <div class="container">
+        <h2>Study Grind, your courses is here</h2>
+        <div class="table">
+        <table>
             <thead>
                 <th> Id </th>
                 <th> Username </th>
@@ -30,6 +29,7 @@
                 </c:forEach>
             </tbody>
         </table>
+        </div>
     </div>
 
     <script src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"> </script>
