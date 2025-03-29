@@ -13,9 +13,9 @@ public class TodoService {
     static {
         todoList.add(new Todo(1, "anushree", "Learn Springboot",
                         LocalDate.now().plusMonths(1), false));
-        todoList.add(new Todo(1, "anushree", "Learn Hibernate",
+        todoList.add(new Todo(2, "anushree", "Learn Hibernate",
                 LocalDate.now().plusMonths(2), false));
-        todoList.add(new Todo(1, "anushree", "Learn Microservices", LocalDate.now().plusMonths(3), false));
+        todoList.add(new Todo(3, "anushree", "Learn Microservices", LocalDate.now().plusMonths(3), false));
     }
 
     public List<Todo> get_todos(){

@@ -6,7 +6,7 @@
 
 <body>
     <div class = "container">
-        Welcome ${user_name}
+        <h2>Welcome ${user_name}</h2>
         <a href = "list_todos">Manage</a> your todos
     </div>
 
