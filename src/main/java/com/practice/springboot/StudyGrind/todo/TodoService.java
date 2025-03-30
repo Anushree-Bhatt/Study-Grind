@@ -8,18 +8,21 @@ import java.util.List;
 
 @Service
 public class TodoService {
-
+    private static int count = 0;
     private static List<Todo> todoList = new ArrayList<>();
     static {
-        todoList.add(new Todo(1, "anushree", "Learn Springboot",
+        todoList.add(new Todo(++count, "anushree", "Learn Springboot",
                         LocalDate.now().plusMonths(1), false));
-        todoList.add(new Todo(2, "anushree", "Learn Hibernate",
+        todoList.add(new Todo(++count, "anushree", "Learn Hibernate",
                 LocalDate.now().plusMonths(2), false));
-        todoList.add(new Todo(3, "anushree", "Learn Microservices", LocalDate.now().plusMonths(3), false));
+        todoList.add(new Todo(++count, "anushree", "Learn Microservices", LocalDate.now().plusMonths(3), false));
     }
 
     public List<Todo> get_todos(){
         return todoList;
     }
 
+    public void addToDo(String userName, String description) {
+        todoList.add(new Todo(++count, userName, description, LocalDate.now().plusMonths(1),false));
+    }
 }

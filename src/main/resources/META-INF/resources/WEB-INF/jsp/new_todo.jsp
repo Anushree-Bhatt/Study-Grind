@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -7,39 +8,28 @@
 </head>
 <body>
     <div class="container mt-3">
-        <form method = "POST">
+        <form:form method = "POST" modelAttribute = "todo">
             <div class = "row mt-2">
                 <div class = "col-md-2">
-                       <label for = "description" class ="col-md-2 form-label">description</label>
+                       <form:label path = "description" cssClass ="form-label">description</form:label>
                 </div>
                 <div class = "col-md-4">
-                       <input type = "text" name = "description" class = "col-md-2 form-control">
-                </div>
-            </div>
-            <div class = "row mt-2">
-                <div class = "col-md-2">
-                    <label for = "targetDate" class = "form-label">target date</label>
+                       <form:input type = "text" path = "description" cssClass = "form-control" />
                 </div>
                 <div class = "col-md-4">
-                    <input type = "text" name = "targetDate" class = "form-control">
-                </div>
-            </div>
-            <div class = "row mt-2">
-                <div class = "col-md-2">
-                    <label class = "form-label">is done?</label>
-                </div>
-                <div class = "col-md-4">
-                    <label>yes</label>
-                    <input type = "checkbox" class = "form-check-input" name = "yes" >
-                    <label>no</label>
-                    <input type = "checkbox" class = "form-check-input" name = "no" >
+                    <form:errors path = "description" cssClass = "text-warning" />
                 </div>
             </div>
 
-            <div class = "row">
-                <button type = "submit" class = "col-md-6 btn btn-primary">submit</button>
+            <form:input type = "hidden" path = "id" />
+            <form:input type = "hidden" path = "username" />
+            <form:input type = "hidden" path = "targetDate" />
+            <form:input type = "hidden" path = "done" />
+
+            <div class = "row mt-2">
+                <form:button type = "submit" cssClass = "col-md-4 btn btn-primary">submit</form:button>
             </div>
-        </form>
+        </form:form>
 
     </div>
 

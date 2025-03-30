@@ -1,10 +1,14 @@
 package com.practice.springboot.StudyGrind.todo;
 
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class Todo {
     private int id;
     private String username;
+
+    @Size(min = 8, message = "Description must have atleast 8 characters.")
     private String description;
     private LocalDate targetDate;
     private boolean done;
