@@ -16,6 +16,7 @@
                         <th scope = "col"> Description </th>
                         <th scope = "col"> Target Date</th>
                         <th scope = "col"> Is Done? </th>
+                        <th scope = "col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,13 +26,14 @@
                             <td>${todo.description} </td>
                             <td>${todo.targetDate}</td>
                             <td>${todo.done}</td>
+                            <td><a href = "/delete_todo?id=${todo.id}" class = "btn btn-warning">DELETE</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
         <div>
-            <button type = "submit" class = "btn btn-outline-primary"><a href="add_todo">Add todo</a></button>
+            <a href="add_todo" class = "btn btn-success">ADD TODO</a>
         </div>
 
 
