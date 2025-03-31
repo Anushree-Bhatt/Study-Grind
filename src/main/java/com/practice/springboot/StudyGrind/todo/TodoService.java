@@ -22,11 +22,20 @@ public class TodoService {
         return todoList;
     }
 
-    public void addToDo(String userName, String description) {
-        todoList.add(new Todo(++count, userName, description, LocalDate.now().plusMonths(1),false));
+    public void addToDo(String userName, Todo todo) {
+        todoList.add(new Todo(++count, userName, todo.getDescription(), todo.getTargetDate(),false));
     }
 
     public void deleteToDo(int id) {
         todoList.removeIf(todo -> todo.getId() == id);
+    }
+
+    public Todo getTodo(int id) {
+        return todoList.stream().filter(todo -> todo.getId() == id).findFirst().get();
+    }
+
+    public void updateToDo(int id, Todo todo) {
+        Todo oldTodo = getTodo(id);
+        oldTodo.setDescription(todo.getDescription());
     }
 }

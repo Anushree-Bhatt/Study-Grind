@@ -29,8 +29,8 @@ public class TodoController {
     }
 
     @RequestMapping(value="/add_todo", method = RequestMethod.GET)
-    public String newToDo(ModelMap model){
-        Todo t = new Todo(0, model.get("user_name").toString(),"", LocalDate.now().plusMonths(1), false);
+    public String showNewToDo(ModelMap model){
+        Todo t = new Todo(0, model.get("user_name").toString(),"", LocalDate.now(), false);
         model.put("todo", t);
         return "new_todo";
     }
@@ -41,7 +41,7 @@ public class TodoController {
             return "new_todo";
         }
         logger.info("Username: {}",todo.getUsername());
-        todoService.addToDo(todo.getUsername(), todo.getDescription());
+        todoService.addToDo(todo.getUsername(), todo);
         return "redirect:/list_todos";
     }
 
@@ -50,6 +50,25 @@ public class TodoController {
         todoService.deleteToDo(id);
         return "redirect:/list_todos";
     }
+
+    @RequestMapping(value="/update_todo", method = RequestMethod.GET)
+    public String showUpdateToDo(@RequestParam int id, ModelMap model){
+        Todo todo = todoService.getTodo(id);
+        logger.info("To do Obj: {}",todo.toString());
+        model.put("todo", todo);
+        return "new_todo";
+    }
+
+    @RequestMapping(value="/update_todo", method = RequestMethod.POST)
+    public String updateToDo(@RequestParam int id, @Valid Todo todo, BindingResult result){
+        if(result.hasErrors()){
+            return "new_todo";
+        }
+        todoService.updateToDo(id, todo);
+        return "redirect:/list_todos";
+    }
+
+
 
 
 

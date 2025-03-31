@@ -21,9 +21,20 @@
                 </div>
             </div>
 
+            <div class = "row mt-2">
+                 <div class = "col-md-2">
+                     <form:label path = "targetDate" cssClass ="form-label">target date</form:label>
+                 </div>
+                 <div class = "col-md-4">
+                     <form:input type = "text" path = "targetDate" cssClass = "form-control" />
+                 </div>
+                 <div class = "col-md-4">
+                      <form:errors path = "targetDate" cssClass = "text-warning" />
+                 </div>
+            </div>
+
             <form:input type = "hidden" path = "id" />
             <form:input type = "hidden" path = "username" />
-            <form:input type = "hidden" path = "targetDate" />
             <form:input type = "hidden" path = "done" />
 
             <div class = "row mt-2">
