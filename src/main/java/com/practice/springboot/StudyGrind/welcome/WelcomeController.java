@@ -1,4 +1,4 @@
-package com.practice.springboot.StudyGrind.login;
+package com.practice.springboot.StudyGrind.welcome;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
