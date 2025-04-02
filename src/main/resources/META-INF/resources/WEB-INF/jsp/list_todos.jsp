@@ -1,23 +1,5 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-
-<html>
-<head>
-    <title> ToDoList </title>
-    <link href = "/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet"> </link>
-</head>
-<body>
-<nav class = "navbar navbar-expand-md navbar-light bg-light">
-                <span class = "navbar-brand ms-5 mb-0 h1">Study Grind</span>
-                <div class = "collapse navbar-collapse">
-                    <ul class = "navbar-nav">
-                        <li class = "navbar-item"><a href = "#" class = "nav-link">Home</a></li>
-                        <li class = "navbar-item"><a href = "#" class = "nav-link">Todos</a></li>
-                    </ul>
-                </div>
-                <ul class = "navbar-nav">
-                     <li class = "navbar-item me-5"><a href = "#" class = "nav-link">Logout</a></li>
-                </ul>
-            </nav>
+<%@ include file = "common/header.jspf" %>
+    <%@ include file = "common/navigation.jspf" %>
     <div class = "container mt-2">
         <h1>Your Todos</h1>
         <div>
@@ -49,11 +31,8 @@
             <a href="add_todo" class = "btn btn-success">ADD TODO</a>
         </div>
 
-
+        <%@ include file = "common/footer.jspf" %>
     </div>
+ </body>
+ </html>
 
-    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.min.js"> </script>
-    <script src="/webjars/jquery/3.7.1/jquery.min.js"> </script>
-
-</body>
-</html>

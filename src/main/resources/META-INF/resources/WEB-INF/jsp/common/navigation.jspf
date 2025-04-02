@@ -1,0 +1,12 @@
+<nav class = "navbar navbar-expand-md navbar-light bg-light">
+     <span class = "navbar-brand ms-5 mb-0 h1">Study Grind</span>
+     <div class = "collapse navbar-collapse">
+         <ul class = "navbar-nav">
+              <li class = "navbar-item"><a href = "#" class = "nav-link">Home</a></li>
+              <li class = "navbar-item"><a href = "#" class = "nav-link">Todos</a></li>
+         </ul>
+     </div>
+     <ul class = "navbar-nav">
+          <li class = "navbar-item me-5"><a href = "#" class = "nav-link">Logout</a></li>
+     </ul>
+</nav>
