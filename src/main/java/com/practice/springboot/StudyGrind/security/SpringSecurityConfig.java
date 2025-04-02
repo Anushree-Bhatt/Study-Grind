@@ -13,7 +13,7 @@ public class SpringSecurityConfig {
 
     @Bean
     public InMemoryUserDetailsManager createUserDetailsManager(){
-        User.UserBuilder user=  User.builder();
+        User.UserBuilder user=  User.withDefaultPasswordEncoder();
         UserDetails userDetails = user
                                 .username("anushree")
                                 .password("anu@123")
@@ -21,5 +21,17 @@ public class SpringSecurityConfig {
 
         return new InMemoryUserDetailsManager(userDetails);
     }
+
+//    // as password prefixAlternate-way - to use {noop}
+//    @Bean
+//    public InMemoryUserDetailsManager createUserDetailsManager(){
+//        User.UserBuilder user=  User.builder();
+//        UserDetails userDetails = user
+//                .username("anushree")
+//                .password("{noop}anu@123")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(userDetails);
+//    }
 
 }
