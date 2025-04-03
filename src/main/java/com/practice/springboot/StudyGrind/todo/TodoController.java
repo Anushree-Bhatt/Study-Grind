@@ -3,6 +3,7 @@ package com.practice.springboot.StudyGrind.todo;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,13 +25,15 @@ public class TodoController {
 
     @RequestMapping("/list_todos")
     public String listOfTodos(ModelMap model){
-        model.put("todo_list", todoService.get_todos());
+        String username = getLoggedInUsername();
+        model.put("todo_list", todoService.get_todos(username));
         return "list_todos"; //list_todos.jsp
     }
 
     @RequestMapping(value="/add_todo", method = RequestMethod.GET)
     public String showNewToDo(ModelMap model){
-        Todo t = new Todo(0, model.get("user_name").toString(),"", LocalDate.now(), false);
+        String username = getLoggedInUsername();
+        Todo t = new Todo(0, username,"", LocalDate.now(), false);
         model.put("todo", t);
         return "new_todo";
     }
@@ -40,8 +43,8 @@ public class TodoController {
         if(result.hasErrors()){
             return "new_todo";
         }
-        logger.info("Username: {}",todo.getUsername());
-        todoService.addToDo(todo.getUsername(), todo);
+        String username = getLoggedInUsername();
+        todoService.addToDo(username, todo);
         return "redirect:/list_todos";
     }
 
@@ -68,7 +71,9 @@ public class TodoController {
         return "redirect:/list_todos";
     }
 
-
+    private String getLoggedInUsername(){
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
 
 
 

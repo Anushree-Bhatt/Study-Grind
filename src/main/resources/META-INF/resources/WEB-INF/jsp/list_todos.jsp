@@ -6,7 +6,6 @@
             <table class="table mt-3 w-75">
                 <thead>
                     <tr>
-                        <th scope = "col"> Id </th>
                         <th scope = "col"> Description </th>
                         <th scope = "col"> Target Date</th>
                         <th scope = "col"> Is Done? </th>
@@ -16,7 +15,6 @@
                 <tbody>
                     <c:forEach var="todo" items="${todo_list}">
                         <tr>
-                            <th scope = "row">${todo.id}</th>
                             <td>${todo.description} </td>
                             <td>${todo.targetDate}</td>
                             <td>${todo.done}</td>

@@ -17,21 +17,22 @@ public class SpringSecurityConfig {
 
     @Bean
     protected InMemoryUserDetailsManager createUserDetailsManager(){
+
+        UserDetails userDetails1 = createUserDetails("anushree", "anu@123", "USER");
+        UserDetails userDetails2 = createUserDetails("sam", "sam@123", "USER");
+        UserDetails userDetails3 = createUserDetails("admin", "admin@123", "ADMIN");
+
+        return new InMemoryUserDetailsManager(userDetails1, userDetails2, userDetails3);
+    }
+
+    private UserDetails createUserDetails(String username, String password, String role) {
         Function<String, String> passwordEncoder = input -> passwordEncoder().encode(input);
-        UserDetails userDetails1 = User.builder().passwordEncoder(passwordEncoder)
-                                .username("user")
-                                .password("user@123")
-                                .roles("USER")
+        UserDetails userDetails = User.builder().passwordEncoder(passwordEncoder)
+                                .username(username)
+                                .password(password)
+                                .roles(role)
                                 .build();
-
-        UserDetails userDetails2 = User.builder()
-                                .passwordEncoder(passwordEncoder)
-                                .username("admin")
-                                .password("admin@123")
-                                .roles("ADMIN")
-                                .build();
-
-        return new InMemoryUserDetailsManager(userDetails1, userDetails2);
+        return userDetails;
     }
 
 //    //Alternate way of doing

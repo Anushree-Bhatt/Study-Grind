@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 public class TodoService {
@@ -18,8 +19,9 @@ public class TodoService {
         todoList.add(new Todo(++count, "anushree", "Learn Microservices", LocalDate.now().plusMonths(3), false));
     }
 
-    public List<Todo> get_todos(){
-        return todoList;
+    public List<Todo> get_todos(String username){
+        Predicate<Todo> p = todo -> todo.getUsername().equalsIgnoreCase(username);
+        return todoList.stream().filter(p).toList();
     }
 
     public void addToDo(String userName, Todo todo) {
