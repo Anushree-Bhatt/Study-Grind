@@ -1,11 +1,15 @@
 package com.practice.springboot.StudyGrind.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -35,25 +39,19 @@ public class SpringSecurityConfig {
         return userDetails;
     }
 
-//    //Alternate way of doing
-//    @Bean
-//    protected InMemoryUserDetailsManager createUserDetailsManager(){
-//        UserDetails userDetails1 = User.builder()
-//                .username("user")
-//                .password(passwordEncoder().encode("user@123"))
-//                .roles("USER")
-//                .build();
-//
-//        UserDetails userDetails2 = User.builder()
-//                .username("admin")
-//                .password(passwordEncoder().encode("admin@123"))
-//                .roles("ADMIN")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(userDetails1, userDetails2);
-//    }
+    //All URLs are protected
+    //Login form for unauthorized access
+    //Disable CSRF
+    //Enable FrameOptions - as h2-console uses it.
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
+        httpSecurity.formLogin(Customizer.withDefaults());
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.headers(header -> header.frameOptions(frame -> frame.disable()));
+        return httpSecurity.build();
 
-
+    }
 
     @Bean
     protected PasswordEncoder passwordEncoder(){
