@@ -1,5 +1,8 @@
-package com.practice.springboot.StudyGrind.todo;
+package com.practice.springboot.StudyGrind.service;
 
+import com.practice.springboot.StudyGrind.repository.TodoRepository;
+import com.practice.springboot.StudyGrind.todo.Todo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -9,6 +12,9 @@ import java.util.function.Predicate;
 
 @Service
 public class TodoService {
+    @Autowired
+    private TodoRepository todoRepository;
+
     private static int count = 0;
     private static List<Todo> todoList = new ArrayList<>();
     static {
@@ -20,8 +26,10 @@ public class TodoService {
     }
 
     public List<Todo> get_todos(String username){
-        Predicate<Todo> p = todo -> todo.getUsername().equalsIgnoreCase(username);
-        return todoList.stream().filter(p).toList();
+//        Predicate<Todo> p = todo -> todo.getUsername().equalsIgnoreCase(username);
+//        return todoList.stream().filter(p).toList();
+        return todoRepository.findAllByUsername(username);
+
     }
 
     public void addToDo(String userName, Todo todo) {
@@ -33,7 +41,8 @@ public class TodoService {
     }
 
     public Todo getTodo(int id) {
-        return todoList.stream().filter(todo -> todo.getId() == id).findFirst().get();
+//        return todoList.stream().filter(todo -> todo.getId() == id).findFirst().get();
+        return todoRepository.findById(id).get();
     }
 
     public void updateToDo(int id, Todo todo) {
