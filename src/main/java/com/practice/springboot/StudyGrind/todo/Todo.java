@@ -8,7 +8,8 @@ import java.time.LocalDate;
 @Entity(name = "Todo")
 public class Todo {
     @Id
-    private int id;
+    @GeneratedValue
+    private Integer id;
     private String username;
     @Size(min = 8, message = "Description must have atleast 8 characters.")
     private String description;
@@ -17,7 +18,7 @@ public class Todo {
 
     public Todo(){ }
 
-    public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
+    public Todo(Integer id, String username, String description, LocalDate targetDate, boolean done) {
         super();
         this.id = id;
         this.username = username;
@@ -26,11 +27,11 @@ public class Todo {
         this.done = done;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -26,10 +26,6 @@
                  </div>
             </div>
 
-            <form:input type = "hidden" path = "id" />
-            <form:input type = "hidden" path = "username" />
-            <form:input type = "hidden" path = "done" />
-
             <div class = "row mt-2">
                 <div class = "col-md-6 border border-dark text-center text-bg-success p-1">
                     <button type = "submit" class = "btn btn-default">submit</button>

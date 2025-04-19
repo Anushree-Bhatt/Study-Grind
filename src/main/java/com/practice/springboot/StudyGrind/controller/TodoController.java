@@ -3,8 +3,10 @@ package com.practice.springboot.StudyGrind.controller;
 import com.practice.springboot.StudyGrind.service.TodoService;
 import com.practice.springboot.StudyGrind.todo.Todo;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Null;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,7 +20,7 @@ import java.time.LocalDate;
 public class TodoController {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
-
+    @Autowired
     TodoService todoService;
 
     public TodoController(TodoService todoService) {
@@ -35,7 +37,8 @@ public class TodoController {
     @RequestMapping(value="/add_todo", method = RequestMethod.GET)
     public String showNewToDo(ModelMap model){
         String username = getLoggedInUsername();
-        Todo t = new Todo(0, username,"", LocalDate.now(), false);
+        logger.info("I'm here!!!");
+        Todo t = new Todo();
         model.put("todo", t);
         return "new_todo";
     }
@@ -43,6 +46,7 @@ public class TodoController {
     @RequestMapping(value="/add_todo", method = RequestMethod.POST)
     public String addNewToDo(ModelMap model, @Valid Todo todo, BindingResult result){
         if(result.hasErrors()){
+            logger.error("{}",result.getAllErrors());
             return "new_todo";
         }
         String username = getLoggedInUsername();
@@ -76,8 +80,5 @@ public class TodoController {
     private String getLoggedInUsername(){
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
-
-
-
 
 }
